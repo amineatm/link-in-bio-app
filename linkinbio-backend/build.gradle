@@ -19,28 +19,37 @@ repositories {
 
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-validation'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-security'
+    // --- Spring Boot Starters ---
+    implementation 'org.springframework.boot:spring-boot-starter-web'                 // MVC / REST API
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'             // Reactive WebClient & handlers
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'            // JPA/Hibernate for DB
+    implementation 'org.springframework.boot:spring-boot-starter-security'            // Authentication & authorization
+    implementation 'org.springframework.boot:spring-boot-starter-validation'          // Bean validation (JSR‑380)
 
-    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    // --- Swagger / OpenAPI ---
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.9'          // Up‑to‑date Swagger UI & OpenAPI 3 :contentReference[oaicite:1]{index=1}
 
-    implementation 'io.jsonwebtoken:jjwt-api:0.12.6'
-    implementation 'io.jsonwebtoken:jjwt-impl:0.12.6'
-    implementation 'io.jsonwebtoken:jjwt-jackson:0.12.6'
+    // --- JWT (JSON Web Token) ---
+    implementation 'io.jsonwebtoken:jjwt-api:0.12.6'                                  // JWT API
+    runtimeOnly    'io.jsonwebtoken:jjwt-impl:0.12.6'                                 // Core JWT implementation
+    runtimeOnly    'io.jsonwebtoken:jjwt-jackson:0.12.6'                              // Jackson support for JWT :contentReference[oaicite:2]{index=2}
 
-    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.9' //swagger
+    // --- OpenAI API Client ---
+    implementation 'com.theokanning.openai-gpt3-java:api:0.18.2'                      // POJOs for GPT APIs
+    implementation 'com.theokanning.openai-gpt3-java:client:0.18.2'                   // Retrofit HTTP client
+    implementation 'com.theokanning.openai-gpt3-java:service:0.18.2'                  // Higher‑level service wrapper :contentReference[oaicite:3]{index=3}
 
-    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.9'
+    // --- MySQL Connector ---
+    runtimeOnly 'com.mysql:mysql-connector-j'                                          // JDBC driver
 
-    compileOnly 'org.projectlombok:lombok'
+    // --- Lombok (compile only) ---
+    compileOnly 'org.projectlombok:lombok'                                             // Boilerplate reduction annotations
     annotationProcessor 'org.projectlombok:lombok'
 
-    runtimeOnly 'com.mysql:mysql-connector-j'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    // --- Dev & Test ---
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'                   // Dev hot reload
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'            // Testing framework
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'                      // JUnit test engine
 }
 
 
